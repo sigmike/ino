@@ -170,6 +170,9 @@ class Build(Command):
         self.e['cflags'] = SpaceList(shlex.split(args.cflags))
         self.e['cxxflags'] = SpaceList(shlex.split(args.cxxflags))
 
+        self.e['asmflags'] = SpaceList(shlex.split(args.cflags))
+        self.e['asmflags'].append("-assembler-with-cpp")
+
         # Again, hard-code the flags that are essential to building the sketch
         self.e['ldflags'] = SpaceList([mcu])
         self.e['ldflags'] += SpaceList([
