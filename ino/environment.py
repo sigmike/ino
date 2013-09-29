@@ -185,7 +185,7 @@ class Environment(dict):
         if 'board_models' in self:
             return self['board_models']
 
-        boards_txt = self.find_arduino_file('boards.txt', ['hardware', 'arduino'], 
+        boards_txt = self.find_arduino_file('boards.txt', ['hardware', 'digispark'],
                                             human_name='Board description file (boards.txt)')
 
         self['board_models'] = BoardModels()

@@ -119,17 +119,17 @@ class Build(Command):
 
     def discover(self, args):
         self.e.find_arduino_dir('arduino_core_dir', 
-                                ['hardware', 'arduino', 'cores', 'arduino'], 
+                                ['hardware', 'digispark', 'cores', 'tiny'],
                                 ['Arduino.h'] if self.e.arduino_lib_version.major else ['WProgram.h'], 
                                 'Arduino core library')
 
         self.e.find_arduino_dir('arduino_libraries_dir', ['libraries'],
                                 human_name='Arduino standard libraries')
 
-        if self.e.arduino_lib_version.major:
-            self.e.find_arduino_dir('arduino_variants_dir',
-                                    ['hardware', 'arduino', 'variants'],
-                                    human_name='Arduino variants directory')
+        #if self.e.arduino_lib_version.major:
+        #    self.e.find_arduino_dir('arduino_variants_dir',
+        #                            ['hardware', 'digispark', 'variants'],
+        #                            human_name='Arduino variants directory')
 
         toolset = [
             ('make', args.make),
@@ -162,10 +162,10 @@ class Build(Command):
         if 'pid' in board['build']:
             self.e['cppflags'].append('-DUSB_PID=%s' % board['build']['pid'])
             
-        if self.e.arduino_lib_version.major:
-            variant_dir = os.path.join(self.e.arduino_variants_dir, 
-                                       board['build']['variant'])
-            self.e.cppflags.append('-I' + variant_dir)
+        #if self.e.arduino_lib_version.major:
+        #    variant_dir = os.path.join(self.e.arduino_variants_dir, 
+        #                               board['build']['variant'])
+        #    self.e.cppflags.append('-I' + variant_dir)
 
         self.e['cflags'] = SpaceList(shlex.split(args.cflags))
         self.e['cxxflags'] = SpaceList(shlex.split(args.cxxflags))

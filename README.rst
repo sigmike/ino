@@ -4,6 +4,9 @@ Ino
 
 Ino is a command line toolkit for working with Arduino hardware
 
+THIS VERSION ONLY WORKS WITH DIGISPARK ARDUINO
+http://digistump.com/wiki/digispark
+
 It allows you to:
 
 * Quickly create new projects
