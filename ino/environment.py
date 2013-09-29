@@ -76,12 +76,13 @@ class Environment(dict):
     arduino_dist_dir_guesses = [
         '/usr/local/share/arduino',
         '/usr/share/arduino',
+        '/opt/DigisparkArduino-Linux32/Digispark-Arduino-1.0.4/',
     ]
 
     if platform.system() == 'Darwin':
         arduino_dist_dir_guesses.insert(0, '/Applications/Arduino.app/Contents/Resources/Java')
 
-    default_board_model = 'uno'
+    default_board_model = 'digispark-tiny'
     ino = sys.argv[0]
 
     def dump(self):
